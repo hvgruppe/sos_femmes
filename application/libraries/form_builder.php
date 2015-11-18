@@ -1,30 +1,30 @@
-<?
+<?php
 
 // -------------------------------------------------------------------------------------------------
 /**
  * form_builder
  * Bootstrap form builder
- * 
- * This simple Library builds internal form elements with correct wrappers for Bootstrap 3.
- * 
- * It extends the Bootstrap form helper and will not work without it.
- * 
  *
- * Carabiner is inspired by Minify {@link http://code.google.com/p/minify/ by Steve Clay}, PHP 
- * Combine {@link http://rakaz.nl/extra/code/combine/ by Niels Leenheer} and AssetLibPro 
+ * This simple Library builds internal form elements with correct wrappers for Bootstrap 3.
+ *
+ * It extends the Bootstrap form helper and will not work without it.
+ *
+ *
+ * Carabiner is inspired by Minify {@link http://code.google.com/p/minify/ by Steve Clay}, PHP
+ * Combine {@link http://rakaz.nl/extra/code/combine/ by Niels Leenheer} and AssetLibPro
  * {@link http://code.google.com/p/assetlib-pro/ by Vincent Esche}, among other things.
  *
  * @package		codeigniter_form_builder
  * @subpackage          Libraries
  * @category            Form Bilder
- * @author		Tyler Wall <tyler.r.wall@gmail.com>	
+ * @author		Tyler Wall <tyler.r.wall@gmail.com>
  * @version		0.8.2
  * @license		http://opensource.org/licenses/MIT MIT licensed.
  *
  * @todo		fix new bugs. Duh :D
  * @todo                test Objects
  * @todo                Add more attributes for form_elements
- * @todo                Add radio 
+ * @todo                Add radio
  */
 /*
   ===============================================================================================
@@ -71,7 +71,7 @@ class Form_builder {
         'default_form_class' => 'form-horizontal col-md-12',
         'default_button_classes' => 'btn btn-primary',
         'default_date_post_addon' => '<span class="input-group-btn"><button class="btn default" type="button"><i class="fa fa-calendar"></i></button></span>'
-        
+
     );
     private $func; /* Global function holder - used in switches */
     private $data_source; /* Global holder for the source of the data */
@@ -80,7 +80,7 @@ class Form_builder {
     private $print_string = ''; /* An output buffer */
 
     /**
-     * @property array $input_addons  
+     * @property array $input_addons
      * This is for adding input-groups and addons.
      * pre/post do not have to be inputed as arrays but will be turned into ones
      * so that we can handle multipal pre/post input addons.
@@ -131,7 +131,7 @@ class Form_builder {
     }
 
     /**
-     * 
+     *
      * @param array $ary - an array from the DB. Format: $k => $v
      * @param array $custom_options - optional, an array that will override
      * the default values produced by this funciton
@@ -164,9 +164,9 @@ class Form_builder {
              * TODO: this should be put in the options. It is suited specificaly for my database
              * configuration and my practices - which include having a 'id', 'modified', 'created', and 'active'
              * column in *ALL* databases - as well as some specific data.
-             * 
+             *
              * NOTE: This function will likely see a lot of change to make sure it is working and/or re-built
-             * 'the right way' 
+             * 'the right way'
              */
             if (is_json($v)) {
                 $elm_options['type'] = 'json';
@@ -215,12 +215,12 @@ class Form_builder {
     }
 
     /**
-     * 
+     *
      * @param array $pre_built - the array that was pre-built using `auto_db_to_options`
      * @param string $id - the id/name of the element to add to
      * @param array $vals_ary - an array of new (or over-riding) values
      * @return none
-     * 
+     *
      * @ussage
      *      $this->form_builder->change_pre_built($coupon_form_options, 'type', array(
      *           'help' => 'Percentage or Fixed Amount',
@@ -230,9 +230,9 @@ class Form_builder {
      *               'F' => 'Fixed Amount'
      *           )
      *       ));
-     * 
+     *
      * @notes The same effect can be gained when calling `auto_db_to_options` and passing
-     * the 2nd paramater ($custom_options). But this is for the event that you need to do 
+     * the 2nd paramater ($custom_options). But this is for the event that you need to do
      * custom / advanced changes.
      */
     function change_pre_built(&$pre_built, $id, $vals_ary) {
@@ -283,14 +283,14 @@ class Form_builder {
 
     /**
      * Function build_display
-     * 
+     *
      * Function is to build a viewable form using the easy form builder.
      * Includes token form_open and form_close just to make sure all the styling
-     * works correctly. 
-     * 
+     * works correctly.
+     *
      * @param array $options - the elements/options for the form elemnts being built.
      * @param array/object $data_source - a default source for the value
-     * @return string - the elements 
+     * @return string - the elements
      */
     function build_display($options, $data_source = array()) {
         $this->_reset_builder();
@@ -357,8 +357,8 @@ class Form_builder {
             }
         }
 
-        /* make sure there is a 'value' attribute 
-         * Also, make for fun defaulting by passing an object 
+        /* make sure there is a 'value' attribute
+         * Also, make for fun defaulting by passing an object
          */
         $default_value = '';
         if (isset($this->elm_options['name']) && isset($this->data_source[$this->elm_options['name']])) {
@@ -432,7 +432,7 @@ class Form_builder {
      * Form Value
      *
      * Upgraded from Codeigniter Form Helper
-     * 
+     *
      * Grabs a value from the POST or GET array for the specified field so you can
      * re-populate an input field or textarea.  If Form Validation
      * is active it retrieves the info from the validation class
@@ -470,7 +470,7 @@ class Form_builder {
         $input_html_string = '';
         /* Combine elements have multiple input elements on the same line.
          * This block will call this function, '_build_input' call recursivly.
-         * 
+         *
          * Example use: Credit Card EXP month/year
          */
         if ($this->func == 'form_combine') {
@@ -491,7 +491,7 @@ class Form_builder {
         } else {
             switch ($this->func) {
                 /*
-                 * This should eventualy be expanded to be able to edit individual elements in the k=>v 
+                 * This should eventualy be expanded to be able to edit individual elements in the k=>v
                  * For now it will just display them.
                  */
                 case 'form_json':
@@ -508,10 +508,10 @@ class Form_builder {
                         $class .= ' ' . $this->config['default_button_classes'];
                     }
                     $this->elm_options['class'] = trim($class);
-                    
+
                     $value = $this->elm_options['label'];
                     unset($this->elm_options['label']);
-                    
+
                     $input_html_string = anchor('', $value, $this->elm_options);
                     break;
                 case 'form_label':
