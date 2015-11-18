@@ -28,8 +28,9 @@ class Demande extends CI_Controller {
 // General
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            $crud->set_theme('datatables');
-            //$crud->set_theme('twitter-bootstrap');
+            //$crud->set_theme('datatables');
+            $crud->unset_bootstrap();
+            $crud->set_theme('twitter-bootstrap');
             $crud->where('id_from_femme', $id);
             $crud->set_table('sos_demande');
             $crud->set_subject('Intervention');
@@ -99,9 +100,9 @@ class Demande extends CI_Controller {
 
     function lieu_ressource($value, $row) {
         $row_query_lieu_ressource = $this->db->query('SELECT c.name_demande_lieu_ressource
-          FROM sos_demande AS a 
+          FROM sos_demande AS a
           JOIN sos_relation_demande_lieu_ressource AS b ON a.id_demande=b.id_from_demande
-          JOIN sos_gen_demande_lieu_ressource AS c ON b.id_from_lieu_ressource=c.id_demande_lieu_ressource 
+          JOIN sos_gen_demande_lieu_ressource AS c ON b.id_from_lieu_ressource=c.id_demande_lieu_ressource
           WHERE a.id_demande = ' . $row->id_demande)->result_array();
 
         $html = '<ul>';
@@ -114,7 +115,7 @@ class Demande extends CI_Controller {
 
     function accompagnement_specialise($value, $row) {
         $row_query_accompagnement_specialise = $this->db->query('SELECT c.name_demande_accompagnement_specialise
-          FROM sos_demande AS a 
+          FROM sos_demande AS a
           JOIN sos_relation_demande_accompagnement_specialise AS b ON a.id_demande=b.id_from_demande
           JOIN sos_gen_demande_accompagnement_specialise AS c ON b.id_from_accompagnement_specialise=c.id_demande_accompagnement_specialise
           WHERE a.id_demande = ' . $row->id_demande)->result_array();

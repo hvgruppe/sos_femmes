@@ -161,7 +161,7 @@ class Statistiques extends CI_Controller {
                     'label' => 'Année',
                     'type' => 'combine',
                     'elements' => array(
-                       
+
                         array(
                             'id' => 'anee',
                             'autocomplete' => 'anee',

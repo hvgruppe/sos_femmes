@@ -804,16 +804,15 @@ class Navigation extends CI_Model {
           </nav>
           </div>'; */
 
-        return '
-<ul class="nav nav-pills">
+        return '<ul class="nav nav-pills">
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
       Actions <span class="caret"></span>
     </a>
    <ul class="dropdown-menu">
                 <li class="' . $lien1_1[0] . '"><a href="' . $lien1_1[1] . '">Exporter dossier PDF</a></li>
-                <li class="' . $lien1_3[0] . '"><a href="' . $lien1_3[1] . '">Exporter base de données</a></li>      
-                <li class="divider"></li>                
+                <li class="' . $lien1_3[0] . '"><a href="' . $lien1_3[1] . '">Exporter base de données</a></li>
+                <li class="divider"></li>
                 <li class="dropdown-submenu ' . $lien1_5[0] . '">
                     <a tabindex="-1" href="' . $lien1_5[1] . '">Premier acceuil</a>
                     <ul class="dropdown-menu">
@@ -862,7 +861,7 @@ class Navigation extends CI_Model {
                             <ul class="dropdown-menu">
                                 <li class="' . $lien3_1_2_1[0] . '"><a href="' . $lien3_1_2_1[1] . '">Situation professionnelle</a></li>
                                 <li class="' . $lien3_1_2_2[0] . '"><a href="' . $lien3_1_2_2[1] . '">Situation professionnelle détaillée</a></li>
-                                <li class="' . $lien3_1_2_3[0] . '"><a href="#' . $lien3_1_2_3[1] . '">Autres infos emploi</a></li>
+                                <li class="' . $lien3_1_2_3[0] . '"><a href="' . $lien3_1_2_3[1] . '">Autres infos emploi</a></li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu ' . $lien3_1_3[0] . '">
@@ -897,7 +896,7 @@ class Navigation extends CI_Model {
                         <li class="' . $lien3_2_2[0] . '"><a href="' . $lien3_2_2[1] . '">Accueil</a></li>
                         <li class="' . $lien3_2_3[0] . '"><a href="' . $lien3_2_3[1] . '">Hbgt</a></li>
                         <li class="' . $lien3_2_4[0] . '"><a href="' . $lien3_2_4[1] . '">Accompagnement spécialisé</a></li>
-                        <li class="' . $lien3_2_5[0] . '"><a href="' . $lien3_2_5[1] . '">Lieu ressource</a></li>                            
+                        <li class="' . $lien3_2_5[0] . '"><a href="' . $lien3_2_5[1] . '">Lieu ressource</a></li>
                         <li class="dropdown-submenu ' . $lien3_2_6[0] . '">
                             <a tabindex="-1" href="' . $lien3_2_6[1] . '">Menu Enfants</a>
                             <ul class="dropdown-menu">
@@ -905,7 +904,7 @@ class Navigation extends CI_Model {
                                 <li class="' . $lien3_2_6_2[0] . '"><a href="' . $lien3_2_6_2[1] . '">Activité</a></li>
                             </ul>
                         </li>
-                    </ul>   
+                    </ul>
                 </li>
                 <li class="dropdown-submenu ' . $lien3_3[0] . '">
                     <a tabindex="-1" href="' . $lien3_3[1] . '">Menu Violence</a>
@@ -913,7 +912,7 @@ class Navigation extends CI_Model {
                         <li class="' . $lien3_3_1[0] . '"><a href="' . $lien3_3_1[1] . '">Fréquence</a></li>
                         <li class="' . $lien3_3_2[0] . '"><a href="' . $lien3_3_2[1] . '">Commencement</a></li>
                         <li class="' . $lien3_3_3[0] . '"><a href="' . $lien3_3_3[1] . '">De la part</a></li>
-                        <li class="' . $lien3_3_4[0] . '"><a href="' . $lien3_3_4[1] . '">Raisons</a></li>                         
+                        <li class="' . $lien3_3_4[0] . '"><a href="' . $lien3_3_4[1] . '">Raisons</a></li>
                         <li class="dropdown-submenu ' . $lien3_3_5[0] . '">
                             <a tabindex="-1" href="' . $lien3_3_5[1] . '">Violences</a>
                             <ul class="dropdown-menu">
@@ -936,9 +935,9 @@ class Navigation extends CI_Model {
                                 <li class="' . $lien3_3_6_1[0] . '"><a href="' . $lien3_3_6_1[1] . '">Physiques</a></li>
                                 <li class="' . $lien3_3_6_2[0] . '"><a href="' . $lien3_3_6_2[1] . '">Psychologiques</a></li>
                                 <li class="' . $lien3_3_6_3[0] . '"><a href="' . $lien3_3_6_3[1] . '">Administratives</a></li>
-                            </ul>   
+                            </ul>
                         </li>
-                    </ul>   
+                    </ul>
                 </li>
                 <li class="dropdown-submenu ' . $lien3_4[0] . '">
                     <a tabindex="-1" href="' . $lien3_4[1] . '">Menu Démarches</a>
@@ -948,7 +947,7 @@ class Navigation extends CI_Model {
                         <li class="' . $lien3_4_3[0] . '"><a href="' . $lien3_4_3[1] . '">Suites</a></li>
                         <li class="' . $lien3_4_4[0] . '"><a href="' . $lien3_4_4[1] . '">Ordonnance de protection</a></li>
                         <li class="' . $lien3_4_5[0] . '"><a href="' . $lien3_4_5[1] . '">Suites de plainte</a></li>
-                    </ul>   
+                    </ul>
                 </li>
                 <li class="dropdown-submenu ' . $lien3_5[0] . '">
                     <a tabindex="-1" href="' . $lien3_5[1] . '">Menu Psy</a>
@@ -956,7 +955,7 @@ class Navigation extends CI_Model {
                         <li class="' . $lien3_5_1[0] . '"><a href="' . $lien3_5_1[1] . '">Troubles physiologiques</a></li>
                         <li class="' . $lien3_5_2[0] . '"><a href="' . $lien3_5_2[1] . '">Troubles cognitifs</a></li>
                         <li class="' . $lien3_5_3[0] . '"><a href="' . $lien3_5_3[1] . '">Troubles émotionnels</a></li>
-                    </ul>   
+                    </ul>
                 </li>
                  <li class="' . $lien3_6[0] . '"><a href="' . $lien3_6[1] . '">Service</a></li>
                  <li class="' . $lien3_7[0] . '"><a href="' . $lien3_7[1] . '">Utilisateurs</a></li>
@@ -966,8 +965,8 @@ class Navigation extends CI_Model {
                     <ul class="dropdown-menu">
                         <li class="' . $lien3_9_1[0] . '"><a href="' . $lien3_9_1[1] . '">Interlocuteur</a></li>
                         <li class="' . $lien3_9_2[0] . '"><a href="' . $lien3_9_2[1] . '">Appel</a></li>
-                                    
-                    </ul>   
+
+                    </ul>
                 </li>
             </ul>
   </li>

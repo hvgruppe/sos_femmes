@@ -29,8 +29,9 @@ class Demarche extends CI_Controller {
 // General
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            $crud->set_theme('datatables');
-            //$crud->set_theme('twitter-bootstrap');
+            //$crud->set_theme('datatables');
+            $crud->unset_bootstrap();
+            $crud->set_theme('twitter-bootstrap');
             $crud->where('id_from_femme_demarche', $id);
             $crud->set_table('sos_demarche');
             $crud->set_subject('Démarche');
@@ -186,9 +187,9 @@ class Demarche extends CI_Controller {
     function suites_de_plainte($value, $row) {
         $html = '';
         $row_query_suites_de_plainte = $this->db->query('SELECT c.name_suites_de_plainte
-          FROM sos_demarche AS a 
+          FROM sos_demarche AS a
           JOIN sos_relation_suites_de_plainte AS b ON a.id_demarche=b.id_from_demarche
-          JOIN sos_gen_suites_de_plainte AS c ON b.id_from_suites_de_plainte=c.id_suites_de_plainte 
+          JOIN sos_gen_suites_de_plainte AS c ON b.id_from_suites_de_plainte=c.id_suites_de_plainte
           WHERE a.id_from_femme_demarche = ' . $row->id_from_femme_demarche . ' AND b.id_from_demarche =' . $row->id_demarche . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_suites_de_plainte) > 0) {
             $html = '';
@@ -207,9 +208,9 @@ class Demarche extends CI_Controller {
 
         $html = '';
         $row_query_ordonnance_de_protection = $this->db->query('SELECT c.name_ordonnance_de_protection
-          FROM sos_demarche AS a 
+          FROM sos_demarche AS a
           JOIN sos_relation_ordonnance_de_protection AS b ON a.id_demarche=b.id_from_demarche
-          JOIN sos_gen_ordonnance_de_protection AS c ON b.id_from_ordonnance_de_protection=c.id_ordonnance_de_protection 
+          JOIN sos_gen_ordonnance_de_protection AS c ON b.id_from_ordonnance_de_protection=c.id_ordonnance_de_protection
           WHERE a.id_from_femme_demarche = ' . $row->id_from_femme_demarche . ' AND b.id_from_demarche =' . $row->id_demarche)->result_array();
         if (count($row_query_ordonnance_de_protection) > 0) {
             $html = '';

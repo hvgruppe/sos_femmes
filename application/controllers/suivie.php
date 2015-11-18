@@ -39,7 +39,7 @@ class Suivie extends CI_Controller {
 // General
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            $crud->set_theme('datatables');
+            //$crud->set_theme('datatables');
             $crud->where('id_from_femme', $this->id_femme);
             $crud->where('rdv', 4);
             $crud->set_table('sos_demande');
@@ -49,7 +49,7 @@ class Suivie extends CI_Controller {
 //Master/child relations
 //Visual
             $crud->columns('date_entry', 'visite', 'commentaire_psy');
-//unsets         
+//unsets
 
 
             $crud->unset_fields('id_demande', 'date_entry', 'dump', 'visite', 'accueil', 'informations', 'conseil', 'orientation', 'rdv', 'hebergement', 'logement', 'aide_materielle', 'adresse_postale', 'accompagnement_exterieur', 'commentaire');

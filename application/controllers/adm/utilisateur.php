@@ -27,8 +27,9 @@ class Utilisateur extends CI_Controller {
 // General
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            $crud->set_theme('datatables');
-            //$crud->set_theme('twitter-bootstrap');
+            $crud->unset_bootstrap();
+            //$crud->set_theme('datatables');
+            $crud->set_theme('twitter-bootstrap');
             $crud->set_table('sos_utilisateur');
             $crud->set_subject('Utilisateurs');
 
@@ -52,7 +53,7 @@ class Utilisateur extends CI_Controller {
             if ($this->session->userdata('status')=='0' OR $this->session->userdata('status')=='2' OR $this->session->userdata('status')=='4' OR $this->session->userdata('status')=='5'){
                 $crud->unset_delete();
             }
-            
+
 // Renders
             $output = $crud->render();
             $menu = new stdClass;

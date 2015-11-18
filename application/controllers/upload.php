@@ -33,8 +33,9 @@ class Upload extends CI_Controller {
 // General
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            $crud->set_theme('datatables');
-            //$crud->set_theme('twitter-bootstrap');
+            //$crud->set_theme('datatables');
+            $crud->unset_bootstrap();
+            $crud->set_theme('twitter-bootstrap');
             $crud->where('id_from_femme', $id);
             $crud->set_table('sos_upload');
             $crud->set_subject('Document');
@@ -47,7 +48,7 @@ class Upload extends CI_Controller {
 //Visual
             $crud->columns('type_uploads', 'detailles', 'file_url', 'date_entry');
 //unsets
- 
+
             $crud->unset_fields('date_entry');
             $crud->unset_export();
             $crud->unset_print();
@@ -99,7 +100,7 @@ class Upload extends CI_Controller {
             if ($query->num_rows == 1) {
                 $row_femme = $query->row();
             }
-           
+
 // Renders
             $output = $crud->render();
             $output->output.= $js_type_uploads;

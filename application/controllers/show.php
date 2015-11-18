@@ -250,9 +250,9 @@ class Show extends CI_Controller {
         foreach ($row_demarches as $key => $value) {
 
             $row_query_ordonnance_de_protection = $this->db->query('SELECT c.name_ordonnance_de_protection
-          FROM sos_demarche AS a 
+          FROM sos_demarche AS a
           JOIN sos_relation_ordonnance_de_protection AS b ON a.id_demarche=b.id_from_demarche
-          JOIN sos_gen_ordonnance_de_protection AS c ON b.id_from_ordonnance_de_protection=c.id_ordonnance_de_protection 
+          JOIN sos_gen_ordonnance_de_protection AS c ON b.id_from_ordonnance_de_protection=c.id_ordonnance_de_protection
           WHERE a.id_demarche = ' . $value["id_demarche"])->result_array();
             $row_query_ordonnance_de_protection_array = array();
             foreach ($row_query_ordonnance_de_protection as $keys => $values) {
@@ -263,9 +263,9 @@ class Show extends CI_Controller {
 
 
             $row_query_suites_de_plainte = $this->db->query('SELECT c.name_suites_de_plainte
-          FROM sos_demarche AS a 
+          FROM sos_demarche AS a
           JOIN sos_relation_suites_de_plainte AS b ON a.id_demarche=b.id_from_demarche
-          JOIN sos_gen_suites_de_plainte AS c ON b.id_from_suites_de_plainte=c.id_suites_de_plainte 
+          JOIN sos_gen_suites_de_plainte AS c ON b.id_from_suites_de_plainte=c.id_suites_de_plainte
           WHERE a.id_demarche = ' . $value["id_demarche"] . ' ORDER BY b.priority ASC')->result_array();
             $row_query_suites_de_plainte_array = array();
             foreach ($row_query_suites_de_plainte as $keys => $values) {
@@ -299,9 +299,9 @@ class Show extends CI_Controller {
         foreach ($row_demande as $key => $value) {
 //$row_demande[$key]['nom_service']=$value["service"];
             $row_query_lieu_ressource = $this->db->query('SELECT c.name_demande_lieu_ressource
-          FROM sos_demande AS a 
+          FROM sos_demande AS a
           JOIN sos_relation_demande_lieu_ressource AS b ON a.id_demande=b.id_from_demande
-          JOIN sos_gen_demande_lieu_ressource AS c ON b.id_from_lieu_ressource=c.id_demande_lieu_ressource 
+          JOIN sos_gen_demande_lieu_ressource AS c ON b.id_from_lieu_ressource=c.id_demande_lieu_ressource
           WHERE a.id_demande = ' . $value["id_demande"])->result_array();
 
             $row_query_lieu_ressource_array = array();
@@ -313,7 +313,7 @@ class Show extends CI_Controller {
 
             $row_demande[$key]['accompagnement_specialise'] = array();
             $row_query_accompagnement_specialise = $this->db->query('SELECT c.name_demande_accompagnement_specialise
-          FROM sos_demande AS a 
+          FROM sos_demande AS a
           JOIN sos_relation_demande_accompagnement_specialise AS b ON a.id_demande=b.id_from_demande
           JOIN sos_gen_demande_accompagnement_specialise AS c ON b.id_from_accompagnement_specialise=c.id_demande_accompagnement_specialise
           WHERE a.id_demande = ' . $value["id_demande"])->result_array();
@@ -358,9 +358,9 @@ class Show extends CI_Controller {
                     $row_enfants[$keys]['recus'] = $row_recu->name_recu;
                 }
                 $row_query_accompagniement_kid = $this->db->query('SELECT c.name_accompagniement_kid
-          FROM sos_enfants AS a 
+          FROM sos_enfants AS a
           JOIN sos_relation_accompagniement_kid AS b ON a.id_enfants=b.id_from_enfants
-          JOIN sos_gen_accompagniement_kid AS c ON b.id_from_accompagniement_kid=c.id_accompagniement_kid    
+          JOIN sos_gen_accompagniement_kid AS c ON b.id_from_accompagniement_kid=c.id_accompagniement_kid
           WHERE a.id_from_kids = ' . $values['id_from_kids'] . ' AND a.id_from_demande =' . $value["id_demande"])->result_array();
                 $row_query_accompagniement_kid_array = array();
                 foreach ($row_query_accompagniement_kid as $keyss => $valuess) {
@@ -369,9 +369,9 @@ class Show extends CI_Controller {
                 $row_enfants[$keys]['accompagniement_kid'] = $row_query_accompagniement_kid_array;
 
                 $row_query_activite_kid = $this->db->query('SELECT c.name_activite_kid
-          FROM sos_enfants AS a 
+          FROM sos_enfants AS a
           JOIN sos_relation_activite_kid AS b ON a.id_enfants=b.id_from_enfants
-          JOIN sos_gen_activite_kid AS c ON b.id_from_activite_kid=c.id_activite_kid    
+          JOIN sos_gen_activite_kid AS c ON b.id_from_activite_kid=c.id_activite_kid
           WHERE a.id_from_kids = ' . $values['id_from_kids'] . ' AND a.id_from_demande =' . $value["id_demande"])->result_array();
                 $row_query_activite_kid_array = array();
                 foreach ($row_query_activite_kid as $keyss => $valuess) {
@@ -388,9 +388,9 @@ class Show extends CI_Controller {
 
         $row_femme->violences = new stdClass;
         $row_query_violences_physiques = $this->db->query('SELECT c.name_violences_physiques
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_violences_physiques AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_violences_physiques AS c ON b.id_from_violences_physiques=c.id_violences_physiques 
+          JOIN sos_gen_violences_physiques AS c ON b.id_from_violences_physiques=c.id_violences_physiques
           WHERE a.id_from_femme = ' . $id . ' ORDER BY b.priority ASC')->result_array();
         $row_query_violences_physiques_array = array();
         foreach ($row_query_violences_physiques as $key => $value) {
@@ -399,9 +399,9 @@ class Show extends CI_Controller {
         $row_femme->violences->violences_physiques = $row_query_violences_physiques_array;
 
         $row_query_violences_psychologiques = $this->db->query('SELECT c.name_violences_psychologiques
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_violences_psychologiques AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_violences_psychologiques AS c ON b.id_from_violences_psychologiques=c.id_violences_psychologiques 
+          JOIN sos_gen_violences_psychologiques AS c ON b.id_from_violences_psychologiques=c.id_violences_psychologiques
           WHERE a.id_from_femme = ' . $id . ' ORDER BY b.priority ASC')->result_array();
         $row_query_violences_psychologiques_array = array();
         foreach ($row_query_violences_psychologiques as $key => $value) {
@@ -410,9 +410,9 @@ class Show extends CI_Controller {
         $row_femme->violences->violences_psychologiques = $row_query_violences_psychologiques_array;
 
         $row_query_violences_sexuelles = $this->db->query('SELECT c.name_violences_sexuelles
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_violences_sexuelles AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_violences_sexuelles AS c ON b.id_from_violences_sexuelles=c.id_violences_sexuelles 
+          JOIN sos_gen_violences_sexuelles AS c ON b.id_from_violences_sexuelles=c.id_violences_sexuelles
           WHERE a.id_from_femme = ' . $id . ' ORDER BY b.priority ASC')->result_array();
         $row_query_violences_sexuelles_array = array();
         foreach ($row_query_violences_sexuelles as $key => $value) {
@@ -421,9 +421,9 @@ class Show extends CI_Controller {
         $row_femme->violences->violences_sexuelles = $row_query_violences_sexuelles_array;
 
         $row_query_violences_economiques = $this->db->query('SELECT c.name_violences_economiques
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_violences_economiques AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_violences_economiques AS c ON b.id_from_violences_economiques=c.id_violences_economiques 
+          JOIN sos_gen_violences_economiques AS c ON b.id_from_violences_economiques=c.id_violences_economiques
           WHERE a.id_from_femme = ' . $id . ' ORDER BY b.priority ASC')->result_array();
         $row_query_violences_economiques_array = array();
         foreach ($row_query_violences_economiques as $key => $value) {
@@ -432,9 +432,9 @@ class Show extends CI_Controller {
         $row_femme->violences->violences_economiques = $row_query_violences_economiques_array;
 
         $row_query_violences_administratives = $this->db->query('SELECT c.name_violences_administratives
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_violences_administratives AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_violences_administratives AS c ON b.id_from_violences_administratives=c.id_violences_administratives 
+          JOIN sos_gen_violences_administratives AS c ON b.id_from_violences_administratives=c.id_violences_administratives
           WHERE a.id_from_femme = ' . $id . ' ORDER BY b.priority ASC')->result_array();
         $row_query_violences_administratives_array = array();
         foreach ($row_query_violences_administratives as $key => $value) {
@@ -445,9 +445,9 @@ class Show extends CI_Controller {
 
 
         $row_query_violences_sociales = $this->db->query('SELECT c.name_violences_sociales
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_violences_sociales AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_violences_sociales AS c ON b.id_from_violences_sociales=c.id_violences_sociales 
+          JOIN sos_gen_violences_sociales AS c ON b.id_from_violences_sociales=c.id_violences_sociales
           WHERE a.id_from_femme = ' . $id . ' ORDER BY b.priority ASC')->result_array();
 
         $row_query_violences_sociales_array = array();
@@ -457,9 +457,9 @@ class Show extends CI_Controller {
         $row_femme->violences->violences_sociales = $row_query_violences_sociales_array;
 
         $row_query_violences_privations = $this->db->query('SELECT c.name_violences_privations
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_violences_privations AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_violences_privations AS c ON b.id_from_violences_privations=c.id_violences_privations 
+          JOIN sos_gen_violences_privations AS c ON b.id_from_violences_privations=c.id_violences_privations
           WHERE a.id_from_femme = ' . $id . ' ORDER BY b.priority ASC')->result_array();
 
         $row_query_violences_privations_array = array();
@@ -470,9 +470,9 @@ class Show extends CI_Controller {
 
 
         $row_query_violences_juridiques = $this->db->query('SELECT c.name_violences_juridiques
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_violences_juridiques AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_violences_juridiques AS c ON b.id_from_violences_juridiques=c.id_violences_juridiques 
+          JOIN sos_gen_violences_juridiques AS c ON b.id_from_violences_juridiques=c.id_violences_juridiques
           WHERE a.id_from_femme = ' . $id . ' ORDER BY b.priority ASC')->result_array();
         $row_query_violences_juridiques_array = array();
         foreach ($row_query_violences_juridiques as $key => $value) {
@@ -483,9 +483,9 @@ class Show extends CI_Controller {
 
 
         $row_query_violences_enfants_directes = $this->db->query('SELECT c.name_violences_enfants_directes
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_violences_enfants_directes AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_violences_enfants_directes AS c ON b.id_from_violences_enfants_directes=c.id_violences_enfants 
+          JOIN sos_gen_violences_enfants_directes AS c ON b.id_from_violences_enfants_directes=c.id_violences_enfants
           WHERE a.id_from_femme = ' . $id . ' ORDER BY b.priority ASC')->result_array();
         $row_query_violences_enfants_directes_array = array();
         foreach ($row_query_violences_enfants_directes as $key => $value) {
@@ -495,9 +495,9 @@ class Show extends CI_Controller {
 
 
         $row_query_violences_enfants_indirectes = $this->db->query('SELECT c.name_violences_enfants_indirectes
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_violences_enfants_indirectes AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_violences_enfants_indirectes AS c ON b.id_from_violences_enfants_indirectes=c.id_violences_enfants 
+          JOIN sos_gen_violences_enfants_indirectes AS c ON b.id_from_violences_enfants_indirectes=c.id_violences_enfants
           WHERE a.id_from_femme = ' . $id . ' ORDER BY b.priority ASC')->result_array();
         $row_query_violences_enfants_indirectes_array = array();
         foreach ($row_query_violences_enfants_indirectes as $key => $value) {
@@ -523,9 +523,9 @@ class Show extends CI_Controller {
 
 
         $row_query_de_la_part = $this->db->query('SELECT c.name_de_la_part
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_de_la_part AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_de_la_part AS c ON b.id_from_de_la_part=c.id_de_la_part 
+          JOIN sos_gen_de_la_part AS c ON b.id_from_de_la_part=c.id_de_la_part
           WHERE a.id_from_femme = ' . $id)->result_array();
         $row_query_de_la_part_array = array();
         foreach ($row_query_de_la_part as $key => $value) {
@@ -536,9 +536,9 @@ class Show extends CI_Controller {
 
 
         $row_query_de_la_part_enfants = $this->db->query('SELECT c.name_de_la_part_enfants
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_de_la_part_enfants AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_de_la_part_enfants AS c ON b.id_from_de_la_part_enfants=c.id_de_la_part_enfants 
+          JOIN sos_gen_de_la_part_enfants AS c ON b.id_from_de_la_part_enfants=c.id_de_la_part_enfants
           WHERE a.id_from_femme = ' . $id)->result_array();
         $row_query_de_la_part_enfants_array = array();
         foreach ($row_query_de_la_part_enfants as $key => $value) {
@@ -548,9 +548,9 @@ class Show extends CI_Controller {
 
 
         $row_query_raisons = $this->db->query('SELECT c.name_raisons
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_raisons AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_raisons AS c ON b.id_from_raisons=c.id_raisons 
+          JOIN sos_gen_raisons AS c ON b.id_from_raisons=c.id_raisons
           WHERE a.id_from_femme = ' . $id)->result_array();
 
         $row_query_raisons_array = array();
@@ -563,9 +563,9 @@ class Show extends CI_Controller {
 
         $row_femme->consequences = new stdClass;
         $row_query_consequences_physiques = $this->db->query('SELECT c.name_consequences_physiques
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_consequences_physiques AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_consequences_physiques AS c ON b.id_from_consequences_physiques=c.id_consequences_physiques 
+          JOIN sos_gen_consequences_physiques AS c ON b.id_from_consequences_physiques=c.id_consequences_physiques
           WHERE a.id_from_femme = ' . $id)->result_array();
 
         $row_query_consequences_physiques_array = array();
@@ -577,9 +577,9 @@ class Show extends CI_Controller {
 
 
         $row_query_consequences_psychologiques = $this->db->query('SELECT c.name_consequences_psychologiques
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_consequences_psychologiques AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_consequences_psychologiques AS c ON b.id_from_consequences_psychologiques=c.id_consequences_psychologiques 
+          JOIN sos_gen_consequences_psychologiques AS c ON b.id_from_consequences_psychologiques=c.id_consequences_psychologiques
           WHERE a.id_from_femme = ' . $id)->result_array();
         $row_query_consequences_psychologiques_array = array();
         foreach ($row_query_consequences_psychologiques as $key => $value) {
@@ -590,9 +590,9 @@ class Show extends CI_Controller {
 
 
         $row_query_consequences_administratives = $this->db->query('SELECT c.name_consequences_administratives
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_consequences_administratives AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_consequences_administratives AS c ON b.id_from_consequences_administratives=c.id_consequences_administratives 
+          JOIN sos_gen_consequences_administratives AS c ON b.id_from_consequences_administratives=c.id_consequences_administratives
           WHERE a.id_from_femme = ' . $id)->result_array();
         $row_query_consequences_administratives_array = array();
         foreach ($row_query_consequences_administratives as $key => $value) {
@@ -608,9 +608,9 @@ class Show extends CI_Controller {
         $row_femme->psy = new stdClass;
 
         $row_query_troubles_physiologiques = $this->db->query('SELECT c.name_troubles_physiologiques
-          FROM sos_psy AS a 
+          FROM sos_psy AS a
           JOIN sos_relation_troubles_physiologiques AS b ON a.id_psy=b.id_from_psy
-          JOIN sos_gen_troubles_physiologiques AS c ON b.id_from_troubles_physiologiques=c.id_troubles_physiologiques 
+          JOIN sos_gen_troubles_physiologiques AS c ON b.id_from_troubles_physiologiques=c.id_troubles_physiologiques
           WHERE a.id_from_femme = ' . $id)->result_array();
         $row_query_troubles_physiologiques_array = array();
         foreach ($row_query_troubles_physiologiques as $key => $value) {
@@ -620,9 +620,9 @@ class Show extends CI_Controller {
 
 
         $row_query_troubles_cognitifs = $this->db->query('SELECT c.name_troubles_cognitifs
-          FROM sos_psy AS a 
+          FROM sos_psy AS a
           JOIN sos_relation_troubles_cognitifs AS b ON a.id_psy=b.id_from_psy
-          JOIN sos_gen_troubles_cognitifs AS c ON b.id_from_troubles_cognitifs=c.id_troubles_cognitifs 
+          JOIN sos_gen_troubles_cognitifs AS c ON b.id_from_troubles_cognitifs=c.id_troubles_cognitifs
           WHERE a.id_from_femme = ' . $id)->result_array();
         $row_query_troubles_cognitifs_array = array();
         foreach ($row_query_troubles_cognitifs as $key => $value) {
@@ -632,9 +632,9 @@ class Show extends CI_Controller {
 
 
         $row_query_troubles_emotionnels = $this->db->query('SELECT c.name_troubles_emotionnels
-          FROM sos_psy AS a 
+          FROM sos_psy AS a
           JOIN sos_relation_troubles_emotionnels AS b ON a.id_psy=b.id_from_psy
-          JOIN sos_gen_troubles_emotionnels AS c ON b.id_from_troubles_emotionnels=c.id_troubles_emotionnels 
+          JOIN sos_gen_troubles_emotionnels AS c ON b.id_from_troubles_emotionnels=c.id_troubles_emotionnels
           WHERE a.id_from_femme = ' . $id)->result_array();
         $row_query_troubles_emotionnels_array = array();
         foreach ($row_query_troubles_emotionnels as $key => $value) {

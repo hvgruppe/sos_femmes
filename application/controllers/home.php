@@ -30,10 +30,10 @@ class Home extends CI_Controller {
             $crud = new grocery_CRUD();
             $crud->unset_bootstrap();
             $crud->set_language("french");
-            $crud->set_theme('datatables');
+            //$crud->set_theme('datatables');
             //$crud->set_theme('bootstrap');
             //$crud->set_theme('flexigrid');
-            //$crud->set_theme('twitter-bootstrap');
+            $crud->set_theme('twitter-bootstrap');
 
 
             $crud->set_table('sos_femme');
@@ -376,7 +376,7 @@ class Home extends CI_Controller {
     }
 
     function archiver($value, $row) {
-        if ($row->archiver) {   // echo var_dump($user).'<br />';             
+        if ($row->archiver) {   // echo var_dump($user).'<br />';
             return 'OUI';
         }
     }

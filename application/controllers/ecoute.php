@@ -28,10 +28,9 @@ class Ecoute extends CI_Controller {
 // General
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            $crud->set_theme('datatables');
-            //$crud->set_theme('bootstrap');
+            $crud->unset_bootstrap();
             //$crud->set_theme('datatables');
-            // //$crud->set_theme('twitter-bootstrap');
+            $crud->set_theme('twitter-bootstrap');
             $crud->set_table('sos_ecoute');
             $crud->order_by('premier_contact', 'desc');
             $crud->set_subject('Ecoute téléphonique');
@@ -719,9 +718,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
     function de_la_part($value, $row) {
         $html = '';
         $row_query_de_la_part = $this->db->query('SELECT c.name_de_la_part
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_de_la_part_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_de_la_part AS c ON b.id_from_de_la_part=c.id_de_la_part 
+          JOIN sos_gen_de_la_part AS c ON b.id_from_de_la_part=c.id_de_la_part
           WHERE a.id_femme = ' . $row->id_femme)->result_array();
         if (count($row_query_de_la_part) > 0) {
             $html = '<ul><b>Femme</b><ul>';
@@ -732,9 +731,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
         }
 
         $row_query_de_la_part_enfants = $this->db->query('SELECT c.name_de_la_part_enfants
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_de_la_part_enfants_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_de_la_part_enfants AS c ON b.id_from_de_la_part_enfants=c.id_de_la_part_enfants 
+          JOIN sos_gen_de_la_part_enfants AS c ON b.id_from_de_la_part_enfants=c.id_de_la_part_enfants
           WHERE a.id_femme = ' . $row->id_femme)->result_array();
         if (count($row_query_de_la_part_enfants) > 0) {
             $html.= '<ul><b>Enfants</b><ul>';
@@ -750,9 +749,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
     function raisons($value, $row) {
         $html = '';
         $row_query_raisons = $this->db->query('SELECT c.name_raisons
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_raisons_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_raisons AS c ON b.id_from_raisons=c.id_raisons 
+          JOIN sos_gen_raisons AS c ON b.id_from_raisons=c.id_raisons
           WHERE a.id_femme = ' . $row->id_femme)->result_array();
         foreach ($row_query_raisons as $items) {
             $html.= $items['name_raisons'] . '<br>';
@@ -764,9 +763,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
     function consequences_physiques($value, $row) {
         $html = '<ul>';
         $row_query_consequences_physiques = $this->db->query('SELECT c.name_consequences_physiques
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_consequences_physiques_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_consequences_physiques AS c ON b.id_from_consequences_physiques=c.id_consequences_physiques 
+          JOIN sos_gen_consequences_physiques AS c ON b.id_from_consequences_physiques=c.id_consequences_physiques
           WHERE a.id_femme = ' . $row->id_femme)->result_array();
         foreach ($row_query_consequences_physiques as $items) {
             $html.='<li>' . $items['name_consequences_physiques'] . '</li>';
@@ -779,9 +778,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
         $html = '<ul>';
 
         $row_query_consequences_psychologiques = $this->db->query('SELECT c.name_consequences_psychologiques
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_consequences_psychologiques_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_consequences_psychologiques AS c ON b.id_from_consequences_psychologiques=c.id_consequences_psychologiques 
+          JOIN sos_gen_consequences_psychologiques AS c ON b.id_from_consequences_psychologiques=c.id_consequences_psychologiques
           WHERE a.id_femme = ' . $row->id_femme)->result_array();
         foreach ($row_query_consequences_psychologiques as $items) {
             $html.='<li>' . $items['name_consequences_psychologiques'] . '</li>';
@@ -795,9 +794,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
 
         $html = '';
         $row_query_violences_physiques = $this->db->query('SELECT c.name_violences_physiques
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_violences_physiques_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_violences_physiques AS c ON b.id_from_violences_physiques=c.id_violences_physiques 
+          JOIN sos_gen_violences_physiques AS c ON b.id_from_violences_physiques=c.id_violences_physiques
           WHERE a.id_femme = ' . $row->id_femme . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_violences_physiques) > 0) {
             $html.= '<ul><li><b>Physiques</b><ul>';
@@ -808,9 +807,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
         }
 
         $row_query_violences_psychologiques = $this->db->query('SELECT c.name_violences_psychologiques
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_violences_psychologiques_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_violences_psychologiques AS c ON b.id_from_violences_psychologiques=c.id_violences_psychologiques 
+          JOIN sos_gen_violences_psychologiques AS c ON b.id_from_violences_psychologiques=c.id_violences_psychologiques
           WHERE a.id_femme = ' . $row->id_femme . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_violences_psychologiques) > 0) {
             $html.= '<ul><li><b>Psychologiques</b><ul>';
@@ -822,9 +821,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
 
 
         $row_query_violences_sexuelles = $this->db->query('SELECT c.name_violences_sexuelles
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_violences_sexuelles_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_violences_sexuelles AS c ON b.id_from_violences_sexuelles=c.id_violences_sexuelles 
+          JOIN sos_gen_violences_sexuelles AS c ON b.id_from_violences_sexuelles=c.id_violences_sexuelles
           WHERE a.id_femme = ' . $row->id_femme . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_violences_sexuelles) > 0) {
             $html.= '<ul><li><b>Sexuelles</b><ul>';
@@ -836,9 +835,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
 
 
         $row_query_violences_economiques = $this->db->query('SELECT c.name_violences_economiques
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_violences_economiques_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_violences_economiques AS c ON b.id_from_violences_economiques=c.id_violences_economiques 
+          JOIN sos_gen_violences_economiques AS c ON b.id_from_violences_economiques=c.id_violences_economiques
           WHERE a.id_femme = ' . $row->id_femme . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_violences_economiques) > 0) {
             $html.= '<ul><li><b>Economiques</b><ul>';
@@ -849,9 +848,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
         }
 
         $row_query_violences_administratives = $this->db->query('SELECT c.name_violences_administratives
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_violences_administratives_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_violences_administratives AS c ON b.id_from_violences_administratives=c.id_violences_administratives 
+          JOIN sos_gen_violences_administratives AS c ON b.id_from_violences_administratives=c.id_violences_administratives
           WHERE a.id_femme = ' . $row->id_femme . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_violences_administratives) > 0) {
             $html.= '<ul><li><b>Administratives</b><ul>';
@@ -862,9 +861,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
         }
 
         $row_query_violences_sociales = $this->db->query('SELECT c.name_violences_sociales
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_violences_sociales_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_violences_sociales AS c ON b.id_from_violences_sociales=c.id_violences_sociales 
+          JOIN sos_gen_violences_sociales AS c ON b.id_from_violences_sociales=c.id_violences_sociales
           WHERE a.id_femme = ' . $row->id_femme . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_violences_sociales) > 0) {
             $html.= '<ul><li><b>Sociales</b><ul>';
@@ -875,9 +874,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
         }
 
         $row_query_violences_privations = $this->db->query('SELECT c.name_violences_privations
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_violences_privations_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_violences_privations AS c ON b.id_from_violences_privations=c.id_violences_privations 
+          JOIN sos_gen_violences_privations AS c ON b.id_from_violences_privations=c.id_violences_privations
           WHERE a.id_femme = ' . $row->id_femme . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_violences_privations) > 0) {
             $html.= '<ul><li><b>Privations</b><ul>';
@@ -889,9 +888,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
         }
 
         $row_query_violences_juridiques = $this->db->query('SELECT c.name_violences_juridiques
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_violences_juridiques_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_violences_juridiques AS c ON b.id_from_violences_juridiques=c.id_violences_juridiques 
+          JOIN sos_gen_violences_juridiques AS c ON b.id_from_violences_juridiques=c.id_violences_juridiques
           WHERE a.id_femme = ' . $row->id_femme . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_violences_juridiques) > 0) {
             $html.= '<ul><li><b>Juridiques</b><ul>';
@@ -904,9 +903,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
 
         $pour_les_enfants = '';
         $row_query_violences_enfants_directes = $this->db->query('SELECT c.name_violences_enfants_directes
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_violences_enfants_directes_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_violences_enfants_directes AS c ON b.id_from_violences_enfants_directes=c.id_violences_enfants 
+          JOIN sos_gen_violences_enfants_directes AS c ON b.id_from_violences_enfants_directes=c.id_violences_enfants
           WHERE a.id_femme = ' . $row->id_femme . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_violences_enfants_directes) > 0) {
             $pour_les_enfants.= '<ul><li>Directes<ul>';
@@ -917,9 +916,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
             $pour_les_enfants.='</ul></li></ul>';
         }
         $row_query_violences_enfants_indirectes = $this->db->query('SELECT c.name_violences_enfants_indirectes
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_violences_enfants_indirectes_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_violences_enfants_indirectes AS c ON b.id_from_violences_enfants_indirectes=c.id_violences_enfants 
+          JOIN sos_gen_violences_enfants_indirectes AS c ON b.id_from_violences_enfants_indirectes=c.id_violences_enfants
           WHERE a.id_femme = ' . $row->id_femme . ' ORDER BY b.priority ASC')->result_array();
         if (count($row_query_violences_enfants_indirectes) > 0) {
             $pour_les_enfants.= '<ul><li>Indirectes<ul>';
@@ -941,9 +940,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
 
         $html = '';
         $row_query_consequences_physiques = $this->db->query('SELECT c.name_consequences_physiques
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_consequences_physiques_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_consequences_physiques AS c ON b.id_from_consequences_physiques=c.id_consequences_physiques 
+          JOIN sos_gen_consequences_physiques AS c ON b.id_from_consequences_physiques=c.id_consequences_physiques
           WHERE a.id_femme = ' . $row->id_femme)->result_array();
         if (count($row_query_consequences_physiques) > 0) {
             $html.= '<ul><li><b>Physiques</b><ul>';
@@ -954,9 +953,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
         }
 
         $row_query_consequences_psychologiques = $this->db->query('SELECT c.name_consequences_psychologiques
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_consequences_psychologiques_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_consequences_psychologiques AS c ON b.id_from_consequences_psychologiques=c.id_consequences_psychologiques 
+          JOIN sos_gen_consequences_psychologiques AS c ON b.id_from_consequences_psychologiques=c.id_consequences_psychologiques
           WHERE a.id_femme = ' . $row->id_femme)->result_array();
         if (count($row_query_consequences_psychologiques) > 0) {
             $html.= '<ul><li><b>Psychologiques</b><ul>';
@@ -967,9 +966,9 @@ sos_gen_allocations_familiales.name_allocations_familiales');
         }
 
         $row_query_consequences_administratives = $this->db->query('SELECT c.name_consequences_administratives
-          FROM sos_ecoute AS a 
+          FROM sos_ecoute AS a
           JOIN sos_relation_consequences_administratives_ecoute AS b ON a.id_femme=b.id_from_violences
-          JOIN sos_gen_consequences_administratives AS c ON b.id_from_consequences_administratives=c.id_consequences_administratives 
+          JOIN sos_gen_consequences_administratives AS c ON b.id_from_consequences_administratives=c.id_consequences_administratives
           WHERE a.id_femme = ' . $row->id_femme)->result_array();
         if (count($row_query_consequences_administratives) > 0) {
             $html.= '<ul><li><b>Administratives</b><ul>';

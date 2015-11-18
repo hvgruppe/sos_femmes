@@ -27,8 +27,9 @@ class Enfants extends CI_Controller {
 
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            $crud->set_theme('datatables');
-            //$crud->set_theme('twitter-bootstrap');
+            //$crud->set_theme('datatables');
+            $crud->unset_bootstrap();
+            $crud->set_theme('twitter-bootstrap');
             $crud->where('id_from_demande', $this->id_demande);
             $crud->set_table('sos_enfants');
             $crud->set_subject('Enfant');
@@ -94,9 +95,9 @@ class Enfants extends CI_Controller {
     function accompagniement($value, $row) {
         $html = '<ul>';
         $row_query_accompagniement = $this->db->query('SELECT c.name_accompagniement_kid
-          FROM sos_enfants AS a 
+          FROM sos_enfants AS a
           JOIN sos_relation_accompagniement_kid AS b ON a.id_enfants=b.id_from_enfants
-          JOIN sos_gen_accompagniement_kid AS c ON b.id_from_accompagniement_kid=c.id_accompagniement_kid    
+          JOIN sos_gen_accompagniement_kid AS c ON b.id_from_accompagniement_kid=c.id_accompagniement_kid
           WHERE a.id_from_kids = ' . $row->id_from_kids . ' AND a.id_from_demande =' . $this->id_demande)->result_array();
         foreach ($row_query_accompagniement as $items) {
             $html.='<li>' . $items['name_accompagniement_kid'] . '</li>';
@@ -109,8 +110,8 @@ class Enfants extends CI_Controller {
 
         $html = '';
         $row_query_id_from_kids = $this->db->query('SELECT a.prenom,a.nom,a.age,a.sex,b.name_kids_age
-          FROM sos_kids AS a 
-          JOIN sos_gen_kids_age AS b ON a.age=b.id_kids_age   
+          FROM sos_kids AS a
+          JOIN sos_gen_kids_age AS b ON a.age=b.id_kids_age
           WHERE a.id_kid = ' . $row->id_from_kids)->result_array();
         foreach ($row_query_id_from_kids as $items) {
             $html.= $items['prenom'] . ' ' . $items['nom'] . ' ' . $items['name_kids_age'] . ' ' . $items['sex'];
@@ -122,9 +123,9 @@ class Enfants extends CI_Controller {
     function activite($value, $row) {
         $html = '<ul>';
         $row_query_activite = $this->db->query('SELECT c.name_activite_kid
-          FROM sos_enfants AS a 
+          FROM sos_enfants AS a
           JOIN sos_relation_activite_kid AS b ON a.id_enfants=b.id_from_enfants
-          JOIN sos_gen_activite_kid AS c ON b.id_from_activite_kid=c.id_activite_kid    
+          JOIN sos_gen_activite_kid AS c ON b.id_from_activite_kid=c.id_activite_kid
           WHERE a.id_from_kids = ' . $row->id_from_kids . ' AND a.id_from_demande =' . $this->id_demande)->result_array();
         foreach ($row_query_activite as $items) {
             $html.='<li>' . $items['name_activite_kid'] . '</li>';

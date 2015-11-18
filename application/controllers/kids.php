@@ -30,8 +30,9 @@ class Kids extends CI_Controller {
 
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            $crud->set_theme('datatables');
-            //$crud->set_theme('twitter-bootstrap');
+            //$crud->set_theme('datatables');
+            $crud->unset_bootstrap();
+            $crud->set_theme('twitter-bootstrap');
             $crud->where('id_femme', $id);
             $crud->set_table('sos_kids');
             $crud->set_subject('Enfant(s)');

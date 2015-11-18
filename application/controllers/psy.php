@@ -34,8 +34,9 @@ class Psy extends CI_Controller {
 // General
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            $crud->set_theme('datatables');
-            //$crud->set_theme('twitter-bootstrap');
+            //$crud->set_theme('datatables');
+            $crud->unset_bootstrap();
+            $crud->set_theme('twitter-bootstrap');
             $crud->where('id_from_femme', $this->id_femme);
             $crud->set_table('sos_psy');
             $crud->set_subject('Accompagnement Psychologique');
@@ -84,9 +85,9 @@ class Psy extends CI_Controller {
     function troubles_physiologiques($value, $row) {
         $html = '<ul>';
         $row_query_troubles_physiologiques = $this->db->query('SELECT c.name_troubles_physiologiques
-          FROM sos_psy AS a 
+          FROM sos_psy AS a
           JOIN sos_relation_troubles_physiologiques AS b ON a.id_psy=b.id_from_psy
-          JOIN sos_gen_troubles_physiologiques AS c ON b.id_from_troubles_physiologiques=c.id_troubles_physiologiques 
+          JOIN sos_gen_troubles_physiologiques AS c ON b.id_from_troubles_physiologiques=c.id_troubles_physiologiques
           WHERE a.id_from_femme = ' . $row->id_from_femme)->result_array();
         foreach ($row_query_troubles_physiologiques as $items) {
             $html.='<li>' . $items['name_troubles_physiologiques'] . '</li>';
@@ -98,9 +99,9 @@ class Psy extends CI_Controller {
     function troubles_cognitifs($value, $row) {
         $html = '<ul>';
         $row_query_troubles_cognitifs = $this->db->query('SELECT c.name_troubles_cognitifs
-          FROM sos_psy AS a 
+          FROM sos_psy AS a
           JOIN sos_relation_troubles_cognitifs AS b ON a.id_psy=b.id_from_psy
-          JOIN sos_gen_troubles_cognitifs AS c ON b.id_from_troubles_cognitifs=c.id_troubles_cognitifs 
+          JOIN sos_gen_troubles_cognitifs AS c ON b.id_from_troubles_cognitifs=c.id_troubles_cognitifs
           WHERE a.id_from_femme = ' . $row->id_from_femme)->result_array();
         foreach ($row_query_troubles_cognitifs as $items) {
             $html.='<li>' . $items['name_troubles_cognitifs'] . '</li>';
@@ -112,9 +113,9 @@ class Psy extends CI_Controller {
     function troubles_emotionnels($value, $row) {
         $html = '<ul>';
         $row_query_troubles_emotionnels = $this->db->query('SELECT c.name_troubles_emotionnels
-          FROM sos_psy AS a 
+          FROM sos_psy AS a
           JOIN sos_relation_troubles_emotionnels AS b ON a.id_psy=b.id_from_psy
-          JOIN sos_gen_troubles_emotionnels AS c ON b.id_from_troubles_emotionnels=c.id_troubles_emotionnels 
+          JOIN sos_gen_troubles_emotionnels AS c ON b.id_from_troubles_emotionnels=c.id_troubles_emotionnels
           WHERE a.id_from_femme = ' . $row->id_from_femme)->result_array();
         foreach ($row_query_troubles_emotionnels as $items) {
             $html.='<li>' . $items['name_troubles_emotionnels'] . '</li>';
@@ -127,9 +128,9 @@ class Psy extends CI_Controller {
         $html = '<ul>';
 
         $row_query_consequences_psychologiques = $this->db->query('SELECT c.name_consequences_psychologiques
-          FROM sos_violences AS a 
+          FROM sos_violences AS a
           JOIN sos_relation_consequences_psychologiques AS b ON a.id_violences=b.id_from_violences
-          JOIN sos_gen_consequences_psychologiques AS c ON b.id_from_consequences_psychologiques=c.id_consequences_psychologiques 
+          JOIN sos_gen_consequences_psychologiques AS c ON b.id_from_consequences_psychologiques=c.id_consequences_psychologiques
           WHERE a.id_from_femme = ' . $row->id_from_femme)->result_array();
         foreach ($row_query_consequences_psychologiques as $items) {
             $html.='<li>' . $items['name_consequences_psychologiques'] . '</li>';
