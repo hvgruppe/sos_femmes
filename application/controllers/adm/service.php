@@ -27,9 +27,9 @@ class Service extends CI_Controller {
 // General
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            $crud->unset_bootstrap();
-            //$crud->set_theme('datatables');
-            $crud->set_theme('twitter-bootstrap');
+
+
+            $crud->set_theme('bootstrap');
             $crud->set_table('sos_gen_service');
             $crud->set_subject('Service');
 

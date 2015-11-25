@@ -28,9 +28,9 @@ class Premier_acceuil extends CI_Controller {
             $crud = new grocery_CRUD();
 
             $crud->set_language("french");
-            //$crud->set_theme('datatables');
-            $crud->unset_bootstrap();
-            $crud->set_theme('twitter-bootstrap');
+
+
+            $crud->set_theme('bootstrap');
             $crud->set_table('sos_femme_premier');
             if (!$this->session->userdata('status')) {
                 $crud->where('archiver', FALSE);

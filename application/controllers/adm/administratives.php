@@ -27,9 +27,7 @@ class Administratives extends CI_Controller {
 // General
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            // //$crud->set_theme('datatables');
-            $crud->unset_bootstrap();
-            $crud->set_theme('twitter-bootstrap');
+            $crud->set_theme('bootstrap');
             $crud->set_table('sos_gen_violences_administratives');
             $crud->set_subject('Administratives');
 

@@ -141,7 +141,7 @@ class Examples extends CI_Controller {
 		try{
 			$crud = new grocery_CRUD();
 
-			$crud->set_theme('twitter-bootstrap');
+			$crud->set_theme('bootstrap');
 			$crud->set_table('film');
 			$crud->set_relation_n_n('actors', 'film_actor', 'actor', 'film_id', 'actor_id', 'fullname','priority');
 			$crud->set_relation_n_n('category', 'film_category', 'category', 'film_id', 'category_id', 'name');

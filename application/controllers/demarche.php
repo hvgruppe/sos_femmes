@@ -29,9 +29,9 @@ class Demarche extends CI_Controller {
 // General
             $crud = new grocery_CRUD();
             $crud->set_language("french");
-            //$crud->set_theme('datatables');
-            $crud->unset_bootstrap();
-            $crud->set_theme('twitter-bootstrap');
+
+
+            $crud->set_theme('bootstrap');
             $crud->where('id_from_femme_demarche', $id);
             $crud->set_table('sos_demarche');
             $crud->set_subject('Démarche');

@@ -41,13 +41,13 @@
                 top: -100px;
                 left: 160px;
                 position:relative;
-            }     
-            #footer{ 
-                clear: both; 
-                height: 10%; 
+            }
+            #footer{
+                clear: both;
+                height: 10%;
                 border-top: 1px solid #cccccc;
-                padding: 10px; 
-                margin: 0; 
+                padding: 10px;
+                margin: 0;
             }
 
             .pull-right {
@@ -238,11 +238,11 @@
                 </div>
             </div>
 
-        </div>  
+        </div>
 
 
         <div id="footer">
-            <p> <img src="<?php echo base_url('img/logo.jpg') ?>" height="30" width="30" alt="Efthymios Pavlidis"></p>    
+            <p> <img src="<?php echo base_url('img/logo.jpg') ?>" height="30" width="30" alt="Efthymios Pavlidis"></p>
         </div>
 
     </body>
