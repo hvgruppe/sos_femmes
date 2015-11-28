@@ -256,9 +256,9 @@ class Home extends CI_Controller {
             $js_situation_actuelle = $categories_situation_actuelle->get_js();
 //Visual
             if ($this->session->userdata('status') == '0' OR $this->session->userdata('status') == '4') {
-                $crud->columns('prenom', 'nom', 'nom_marital', 'age', 'date_naissance', 'telephone', 'ville', 'nombre_d\'enfants', 'ouvertures', 'premier_contact', 'nombre_passages');
+                $crud->columns('prenom', 'nom', 'nom_marital', 'age', 'date_naissance', 'telephone', 'ville', 'nombre_denfants', 'ouvertures', 'premier_contact', 'nombre_passages');
             } else {
-                $crud->columns('archiver', 'prenom', 'nom', 'nom_marital', 'age', 'date_naissance', 'telephone', 'ville', 'nombre_d\'enfants', 'ouvertures', 'premier_contact', 'nombre_passages');
+                $crud->columns('archiver', 'prenom', 'nom', 'nom_marital', 'age', 'date_naissance', 'telephone', 'ville', 'nombre_denfants', 'ouvertures', 'premier_contact', 'nombre_passages');
             }
             $crud->display_as('pays', 'Originaire de')
                     ->display_as('archiver', 'Archivage')
@@ -319,7 +319,7 @@ class Home extends CI_Controller {
 //Callbacks
             $crud->callback_column('ouvertures', array($this, 'ouvertures'));
             $crud->callback_column('premier_contact', array($this, 'premier_contact'));
-            $crud->callback_column('nombre_d\'enfants', array($this, 'enfants'));
+            $crud->callback_column('nombre_denfants', array($this, 'enfants'));
             $crud->callback_after_update(array($this, 'insert_after_update'));
             $crud->callback_after_insert(array($this, 'insert_after_insert'));
             $crud->callback_after_delete(array($this, 'after_delete'));

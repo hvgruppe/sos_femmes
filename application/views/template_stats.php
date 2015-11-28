@@ -225,7 +225,9 @@
         <script type="text/javascript">Ladda.bind('input[type=submit]');</script>
 
         <div id="header">
-            <img src="<?php echo base_url('img/sos_femmes_logo.jpg') ?>" alt="SOS Femmes 93">
+            <a href="/home">
+                <img src="<?php echo base_url('img/sos_femmes_logo.jpg') ?>" alt="SOS Femmes 93">
+            </a>
             <?php echo $header; ?>
         </div>
 
